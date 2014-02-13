@@ -1,15 +1,15 @@
 app.module("ContentModule", function(ContentModule, app){
   ContentModule.listTemplate =  "<div>List</div>";
-  ContentModule.showTemplate =  "<div>Show</div>";
+  ContentModule.homeTemplate =  "<div>Home</div>";
 
   ContentModule.ListView = Marionette.ItemView.extend({
     template: _.template(ContentModule.listTemplate),
     className: 'content list'
   });
 
-  ContentModule.ShowView = Marionette.ItemView.extend({
-    template: _.template(ContentModule.showTemplate),
-    className: 'content show'
+  ContentModule.HomeView = Marionette.ItemView.extend({
+    template: _.template(ContentModule.homeTemplate),
+    className: 'content home'
   });
 
   ContentModule.Controller = Marionette.Controller.extend({
@@ -17,8 +17,8 @@ app.module("ContentModule", function(ContentModule, app){
       app.content.show(new ContentModule.ListView());
     },
 
-    displayShow: function() {
-      app.content.show(new ContentModule.ShowView());
+    displayHome: function() {
+      app.content.show(new ContentModule.HomeView());
     }
   });
 
@@ -33,7 +33,7 @@ app.module("ContentModule", function(ContentModule, app){
   ContentModule.Router = Marionette.AppRouter.extend({
     appRoutes: {
       list: "displayList",
-      show: "displayShow"
+      home: "displayHome"
     }
   });
 

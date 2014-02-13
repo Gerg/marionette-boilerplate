@@ -47,7 +47,7 @@ body {
 .list {
   background-color: lightblue;
 }
-.show {
+.home {
   background-color: lightgreen;
 }
 .footer {
@@ -60,4 +60,25 @@ body {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+.navButton {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 18px;
+  color: whitesmoke;
+  margin: 0 5px;
+  background-color: cornflowerblue;
+  text-decoration: none;
+  vertical-align: middle;
+}
+.navButton:nth-child(2) {
+  margin-left: 25px;
+}
+.navButton:hover {
+  background-color: royalblue;
+}
+.headerText {
+  display: inline-block;
+  vertical-align: middle;
 }

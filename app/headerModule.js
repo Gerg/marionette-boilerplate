@@ -1,5 +1,9 @@
 app.module("HeaderModule", function(HeaderModule, app){
-  HeaderModule.viewTemplate = "<div class='vCenter'>Header</div>";
+  HeaderModule.viewTemplate = "<div class='vCenter'>" +
+      "<div class='headerText'>Header</div>" +
+      "<a href='#home' class='navButton'>Home</a>" +
+      "<a href='#list' class='navButton'>List</a>" +
+    "</div>";
 
   HeaderModule.View = Marionette.ItemView.extend({
     template: _.template(HeaderModule.viewTemplate),
