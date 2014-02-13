@@ -1,5 +1,7 @@
 window.app = new Marionette.Application();
 
-app.addInitializer(function(){
-  alert('Hello World');
+app.addRegions({
+  header: ".header",
+  content: ".content",
+  footer: ".footer"
 });
