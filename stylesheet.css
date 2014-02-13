@@ -7,7 +7,6 @@ html, body {
 body {
   margin: 0;
   font-family: helvetica, verdana, arial, sans-serif;
-  background-color: lightsalmon;
 }
 .headerRegion, .contentRegion, .footerRegion {
   width: 100%;
@@ -39,13 +38,21 @@ body {
 .header {
   font-size: 40px;
   font-weight: 100;
-  background-color: plum;
+  background-color: floralwhite;
+  border-bottom: 2px solid darkgray;
 }
 .content {
   padding-top: 30px;
 }
+.list {
+  background-color: lightblue;
+}
+.show {
+  background-color: lightgreen;
+}
 .footer {
-  background-color: palegoldenrod;
+  border-top: 2px solid darkgray;
+  background-color: floralwhite;
 }
 .vCenter {
   position: relative;

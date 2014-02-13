@@ -5,3 +5,7 @@ app.addRegions({
   content: ".contentRegion",
   footer: ".footerRegion"
 });
+
+app.onInitializeAfter = function() {
+  Backbone.history.start();
+};
