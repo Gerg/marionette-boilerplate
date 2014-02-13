@@ -1,11 +1,9 @@
 app.module("FooterModule", function(FooterModule, app){
-  FooterModule.viewTemplate =
-    "<div class='footer vCenterWrap'>" +
-      "<div class='vCenterContent'>Footer</div>" +
-      "</div>"
+  FooterModule.viewTemplate = "<div class='vCenter'>Footer</div>";
 
   FooterModule.View = Marionette.ItemView.extend({
-    template: FooterModule.viewTemplate
+    template: _.template(FooterModule.viewTemplate),
+    className: 'footer'
   });
 
   FooterModule.Controller = Marionette.Controller.extend({

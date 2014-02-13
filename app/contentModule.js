@@ -1,11 +1,9 @@
 app.module("ContentModule", function(ContentModule, app){
-  ContentModule.viewTemplate =
-    "<div class='content vCenterWrap'>" +
-      "<div class='vCenterContent'>Content</div>" +
-      "</div>"
+  ContentModule.viewTemplate =  "<div>Content</div>";
 
   ContentModule.View = Marionette.ItemView.extend({
-    template: ContentModule.viewTemplate
+    template: _.template(ContentModule.viewTemplate),
+    className: 'content'
   });
 
   ContentModule.Controller = Marionette.Controller.extend({
