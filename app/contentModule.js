@@ -1,10 +1,18 @@
 app.module("ContentModule", function(ContentModule, app){
-  ContentModule.listTemplate =  "<div>List</div>";
+  ContentModule.itemTemplate =  "Item";
+  ContentModule.listTemplate =  "<div>List</div><ul></ul>";
   ContentModule.showTemplate =  "<div>Show <%= id %></div>";
 
-  ContentModule.ListView = Marionette.ItemView.extend({
+  ContentModule.ItemView = Marionette.ItemView.extend({
+    template: _.template(ContentModule.itemTemplate),
+    tagName: 'li',
+  });
+
+  ContentModule.ListView = Marionette.CompositeView.extend({
     template: _.template(ContentModule.listTemplate),
-    className: 'content list'
+    className: 'content list',
+    itemView: ContentModule.ItemView,
+    itemViewContainer: 'ul'
   });
 
   ContentModule.ShowView = Marionette.ItemView.extend({
@@ -14,7 +22,9 @@ app.module("ContentModule", function(ContentModule, app){
 
   ContentModule.Controller = Marionette.Controller.extend({
     displayList: function() {
-      app.content.show(new ContentModule.ListView());
+      app.content.show(new ContentModule.ListView({
+        collection: new Backbone.Collection([{1:1},{2:2},{3:3}])
+      }));
     },
 
     displayShow: function(id) {
