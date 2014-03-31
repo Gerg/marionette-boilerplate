@@ -1,11 +1,18 @@
 app.module("ContentModule", function(ContentModule, app){
-  ContentModule.itemTemplate =  "Item";
-  ContentModule.listTemplate =  "<div>List</div><ul></ul>";
-  ContentModule.showTemplate =  "<div>Show <%= id %></div>";
+  ContentModule.itemTemplate =  "<div class='color-block' style='background-color: <%= hex %>;'>" +
+                                  "<a href='#show/<%= cid %>' class='visibility-text'> <%= hex %> </a>"
+                                "</div>";
+  ContentModule.listTemplate =  "<div>Colors: </div><ul class='list-unstyled'></ul>";
+  ContentModule.showTemplate =  "<div class='visibility-text'> Show: <%= hex %></div>";
 
   ContentModule.ItemView = Marionette.ItemView.extend({
     template: _.template(ContentModule.itemTemplate),
     tagName: 'li',
+    templateHelpers: function(){
+      return {
+        cid: this.model.cid
+      };
+    }
   });
 
   ContentModule.ListView = Marionette.CompositeView.extend({
@@ -17,19 +24,23 @@ app.module("ContentModule", function(ContentModule, app){
 
   ContentModule.ShowView = Marionette.ItemView.extend({
     template: _.template(ContentModule.showTemplate),
-    className: 'content show'
+    className: 'content show',
+
+    onShow: function(){
+      this.$el.css('background-color', this.model.get('hex'));
+    }
   });
 
   ContentModule.Controller = Marionette.Controller.extend({
     displayList: function() {
       app.content.show(new ContentModule.ListView({
-        collection: new Backbone.Collection([{1:1},{2:2},{3:3}])
+        collection: app.request('color:all')
       }));
     },
 
     displayShow: function(id) {
       app.content.show(new ContentModule.ShowView({
-        model: new Backbone.Model({id: id})
+        model: app.request('color', id)
       }));
     }
   });
